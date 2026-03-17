@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="div_explicacao">
+        <p>
+            Os sistemas de numeração são formas utilizadas para representar quantidades
+            por meio de símbolos e regras específicas. No cotidiano utilizamos o sistema
+            decimal, que possui base 10 e utiliza os dígitos de 0 a 9.
+        </p>
+
+        <button id="button_pergunta">Qual é a importância na computação?</button>
+        <div id="div_resposta">
+            <p>
+                Na computação são utilizados sistemas como o binário (base 2), octal (base 8)
+                e hexadecimal (base 16). Eles são importantes porque os computadores funcionam
+                com dois estados elétricos: ligado e desligado, representados por 0 e 1.
+            </p>
+        </div>
+
+        <button id="button_pergunta">Por que utilizar octal e hexadecimal?</button>
+        <div id="div_resposta">
+            <p>
+                Os sistemas octal e hexadecimal facilitam a leitura e representação de números
+                binários muito longos, sendo amplamente utilizados em programação, memória e
+                organização de dados.
+            </p>
+        </div>
+
+    </div>
+
+    </div>
+    </div>
+
+    <div id="div_calculadora_card">
+        <h2>Conversor de bases</h2>
+
+        <div id="div_calculadoras">
+
+            <div id="div_calc">
+                <input id="ipt_numero" type="text" placeholder="Digite um número">
+
+                <select id="select_base">
+                    <option value="10">Decimal</option>
+                    <option value="2">Binário</option>
+                    <option value="8">Octal</option>
+                    <option value="16">Hexadecimal</option>
+                    <option value="#" selected>Selecione uma das opções</option>
+                </select>
+
+                <button id="button_div" onclick="converter()">Converter a base</button>
+
+                <div id="div_mensagem"></div>
+
+            </div>
+
+        </div>
+
+
+</body>
+
+</html>
+<script>
+    function converter() {
+
+        let numero = ipt_numero.value
+        var base = select_base.value
+
+        let decimal = parseInt(numero, base)
+
+        let binario = decimal.toString(2)
+        let octal = decimal.toString(8)
+        let hexadecimal = decimal.toString(16).toUpperCase()
+
+        div_mensagem.innerHTML =
+            "Binário: " + binario + "<br>" +
+            "Decimal: " + decimal + "<br>" +
+            "Octal: " + octal + "<br>" +
+            "Hexadecimal: " + hexadecimal
+    }
+
+</script>
