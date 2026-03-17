@@ -9,53 +9,57 @@
 </head>
 
 <body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">Conversor de Bases</div>
+
+<ul class="menu">
+<li><a href="#">Início</a></li>
+<li><a href="#">Explicação</a></li>
+<li><a href="#">Conversor</a></li>
+</ul>
+
+</nav>
+
+<!-- CONTEÚDO -->
+
+<!-- CONTEÚDO -->
+
+<div id="div_conteiner">
+
     <div id="div_explicacao">
+
         <p>
-            Os sistemas de numeração são formas utilizadas para representar quantidades
-            por meio de símbolos e regras específicas. No cotidiano utilizamos o sistema
-            decimal, que possui base 10 e utiliza os dígitos de 0 a 9.
+        Os sistemas de numeração são formas utilizadas para representar quantidades
+        por meio de símbolos e regras específicas. No cotidiano utilizamos o sistema
+        decimal, que possui base 10 e utiliza os dígitos de 0 a 9.
         </p>
 
-        <button id="button_pergunta">Qual é a importância na computação?</button>
-        <div id="div_resposta">
-            <p>
-                Na computação são utilizados sistemas como o binário (base 2), octal (base 8)
-                e hexadecimal (base 16). Eles são importantes porque os computadores funcionam
-                com dois estados elétricos: ligado e desligado, representados por 0 e 1.
-            </p>
-        </div>
-
-        <button id="button_pergunta">Por que utilizar octal e hexadecimal?</button>
-        <div id="div_resposta">
-            <p>
-                Os sistemas octal e hexadecimal facilitam a leitura e representação de números
-                binários muito longos, sendo amplamente utilizados em programação, memória e
-                organização de dados.
-            </p>
-        </div>
+        <p>
+        Na computação são utilizados sistemas como o binário (base 2), octal (base 8)
+        e hexadecimal (base 16).
+        </p>
 
     </div>
 
-    </div>
-    </div>
-
+    <!-- CALCULADORA -->
     <div id="div_calculadora_card">
+
         <h2>Conversor de bases</h2>
 
         <div id="div_calculadoras">
 
             <div id="div_calc">
+
                 <input id="ipt_numero" type="text" placeholder="Digite um número">
 
-                <select id="select_base">
-                    <option value="10">Decimal</option>
-                    <option value="2">Binário</option>
-                    <option value="8">Octal</option>
-                    <option value="16">Hexadecimal</option>
-                    <option value="#" selected>Selecione uma das opções</option>
-                </select>
-
-                <button id="button_div" onclick="converter()">Converter a base</button>
+                <button id="button_div" onclick="Decimal()">Decimal (base 10)</button>
+                <button id="button_div" onclick="Binario()">Binário (base 2)</button>
+                <button id="button_div" onclick="Octal()">Octal (base 8)</button>
+                <button id="button_div" onclick="Hexadecimal()">Hexadecimal (base 16)</button>
 
                 <div id="div_mensagem"></div>
 
@@ -63,27 +67,76 @@
 
         </div>
 
+    </div>
 
+</div>
 </body>
 
 </html>
 <script>
-    function converter() {
+    function Decimal() {
 
-        let numero = ipt_numero.value
-        var base = select_base.value
+        let numero = ipt_numero.value;
 
-        let decimal = parseInt(numero, base)
+        let decimal = parseInt(numero, 10);
 
-        let binario = decimal.toString(2)
-        let octal = decimal.toString(8)
-        let hexadecimal = decimal.toString(16).toUpperCase()
+        let binario = decimal.toString(2);
+        let octal = decimal.toString(8);
+        let hexadecimal = decimal.toString(16).toUpperCase();
 
-        div_mensagem.innerHTML =
-            "Binário: " + binario + "<br>" +
-            "Decimal: " + decimal + "<br>" +
-            "Octal: " + octal + "<br>" +
-            "Hexadecimal: " + hexadecimal
+        div_mensagem.innerHTML = `
+        Binário: ${binario} <br>
+        Octal: ${octal} <br>
+        Hexadecimal: ${hexadecimal}`
+    }
+
+    function Binario() {
+
+        let numero = ipt_numero.value;
+
+        let binario = parseInt(numero, 2);
+
+        let decimal = binario.toString(10);
+        let octal = binario.toString(8);
+        let hexadecimal = binario.toString(16).toUpperCase();
+
+        div_mensagem.innerHTML = `
+        Decimal: ${decimal} <br>
+        Octal: ${octal} <br>
+        Hexadecimal: ${hexadecimal}`
+    }
+
+    function Octal() {
+
+        let numero = ipt_numero.value;
+
+        let octal = parseInt(numero, 8);
+
+        let binario = octal.toString(2);
+        let decimal = octal.toString(10);
+        let hexadecimal = octal.toString(16).toUpperCase();
+
+        div_mensagem.innerHTML = `
+        Binário: ${binario} <br>
+        Decimal: ${decimal} <br>
+        Hexadecimal: ${hexadecimal}`
+    }
+
+    function Hexadecimal() {
+
+        let numero = ipt_numero.value;
+
+        let hexadecimal = parseInt(numero, 16);
+
+        let decimal = hexadecimal.toString(10)
+        let binario = hexadecimal.toString(2);
+        let octal = hexadecimal.toString(8);
+
+
+        div_mensagem.innerHTML = `
+        Binário: ${binario} <br>
+        Octal: ${octal} <br>
+        Deciaml: ${decimal}`
     }
 
 </script>
