@@ -10,72 +10,69 @@
 
 <body>
 
-<!-- navegador -->
+    <!-- navegador -->
 
-<nav id="nav_bar">
+    <nav id="nav_bar">
 
-<div id="logo">Conversor de Bases</div>
+        <div id="logo">Conversor de Bases</div>
 
-<ul id="menu"></ul>
-
-</nav>
+    </nav>
 
 
-<div id="div_conteiner">
+    <div id="div_conteiner">
 
-    <div id="div_explicacao">
+        <div id="div_explicacao">
 
-        <p>
-        Os sistemas de numeração são formas utilizadas para representar quantidades
-        por meio de símbolos e regras específicas. No cotidiano utilizamos o sistema
-        decimal, que possui base 10 e utiliza os dígitos de 0 a 9.
-        </p>
+            <p>
+                Os sistemas de numeração são formas utilizadas para representar quantidades
+                por meio de símbolos e regras específicas. No cotidiano utilizamos o sistema
+                decimal, que possui base 10 e utiliza os dígitos de 0 a 9.
+            </p>
 
-        <p>
-        Na computação são utilizados sistemas como o binário (base 2), octal (base 8)
-        e hexadecimal (base 16).
-        </p>
+            <p>
+                Na computação são utilizados sistemas como o binário (base 2), octal (base 8)
+                e hexadecimal (base 16).
+            </p>
 
-    </div>
+        </div>
 
-    <!-- CALCULADORA -->
-    <div id="div_calculadora_card">
 
-        <h2>Conversor de bases</h2>
+        <div id="div_calculadora_card">
 
-        <div id="div_calculadoras">
+            <h2>Conversor de bases</h2>
 
-            <div id="div_calc">
+            <div id="div_calculadoras">
 
-                <input id="ipt_numero" type="text" placeholder="Digite um número">
-                <p>Selecione a base:</p>
+                <div id="div_calc">
 
-                <button id="button_div" onclick="Decimal()">Decimal (base 10)</button>
-                <button id="button_div" onclick="Binario()">Binário (base 2)</button>
-                <button id="button_div" onclick="Octal()">Octal (base 8)</button>
-                <button id="button_div" onclick="Hexadecimal()">Hexadecimal (base 16)</button>
+                    <input id="ipt_numero" type="text" placeholder="Digite um número">
+                    <p>Selecione a base:</p>
 
-                <div id="div_mensagem"></div>
+                    <button id="button_div" onclick="Decimal()">Decimal (base 10)</button>
+                    <button id="button_div" onclick="Binario()">Binário (base 2)</button>
+                    <button id="button_div" onclick="Octal()">Octal (base 8)</button>
+                    <button id="button_div" onclick="Hexadecimal()">Hexadecimal (base 16)</button>
+
+                    <div id="div_mensagem"></div>
+
+                </div>
 
             </div>
 
         </div>
 
     </div>
-
-</div>
-<span style="color: brown;"></span>
 </body>
 
 </html>
 <script>
     function Decimal() {
-       let numeroOriginal = ipt_numero.value.trim(); // Remove espaços
-       let numero = Number(numeroOriginal).toString(); // Remove zeros à esquerda 
+        let numero = ipt_numero.value;
         let decimal = parseInt(numero, 10);
 
-        if (isNaN(decimal) || decimal.toString(10) !== numero) {
-            div_mensagem.innerHTML = `<span style="color: brown;">ERRO:</span> Digite um número decimal válido.`;
+        if (isNaN(decimal)) {
+            div_mensagem.innerHTML = `<span style="color: brown;">ERRO:</span>
+             Insira um número válido.`;
         } else {
             div_mensagem.innerHTML = `
                 Binário: ${decimal.toString(2)} <br>
@@ -85,11 +82,12 @@
     }
 
     function Binario() {
-        let numero = ipt_numero.value.trim();
+        let numero = ipt_numero.value;
         let binario = parseInt(numero, 2);
 
-        if (isNaN(binario) || binario.toString(2) !== numero) {
-            div_mensagem.innerHTML = `<span style="color: brown;">ERRO:</span> Insira um número binário válido (apenas 0 e 1).`;
+        if (isNaN(binario)) {
+            div_mensagem.innerHTML = `<span style="color: brown;">ERRO:</span> 
+            Insira um número válido `;
         } else {
             div_mensagem.innerHTML = `
                 Decimal: ${binario.toString(10)} <br>
@@ -99,12 +97,12 @@
     }
 
     function Octal() {
-        let numero = ipt_numero.value.trim();
+        let numero = ipt_numero.value;
         let octal = parseInt(numero, 8);
 
-        // Validação para garantir que não tenha dígitos >= 8 
-        if (isNaN(octal) || octal.toString(8) !== numero) {
-            div_mensagem.innerHTML = `<span style="color: brown;">ERRO:</span> Insira um número octal válido (0 a 7).`;
+        if (isNaN(octal)) {
+            div_mensagem.innerHTML = `<span style="color: brown;">ERRO:</span> 
+            Insira um número válido.`;
         } else {
             div_mensagem.innerHTML = `
                 Binário: ${octal.toString(2)} <br>
@@ -114,12 +112,12 @@
     }
 
     function Hexadecimal() {
-        let numero = ipt_numero.value.trim();
+        let numero = ipt_numero.value;
         let hex = parseInt(numero, 16);
 
-        // No hexadecimal, usamos toLowerCase() para comparar 'a' com 'A' sem erro
         if (isNaN(hex) || hex.toString(16).toLowerCase() !== numero.toLowerCase()) {
-            div_mensagem.innerHTML = `<span style="color: brown;">ERRO:</span> Insira um número hexadecimal válido.`;
+            div_mensagem.innerHTML = `<span style="color: brown;">ERRO:</span>
+            Insira um número válido.`;
         } else {
             div_mensagem.innerHTML = `
                 Binário: ${hex.toString(2)} <br>
